@@ -1,0 +1,33 @@
+{# Template VLANs por sitio #}
+vlan {{ vlan_datos }}
+ name DATOS
+vlan {{ vlan_voz }}
+ name VOZ
+vlan {{ vlan_ap }}
+ name APs
+vlan {{ vlan_servidores }}
+ name SERVIDORES
+vlan {{ vlan_invitados }}
+ name INVITADOS
+{% if role == "core" %}
+interface Vlan{{ vlan_datos }}
+ description DATOS
+ ip address {{ svi_datos }} 255.255.255.0
+ no shutdown
+interface Vlan{{ vlan_voz }}
+ description VOZ
+ ip address {{ svi_voz }} 255.255.255.0
+ no shutdown
+interface Vlan{{ vlan_ap }}
+ description APs
+ ip address {{ svi_ap }} 255.255.255.0
+ no shutdown
+interface Vlan{{ vlan_servidores }}
+ description SERVIDORES
+ ip address {{ svi_servidores }} 255.255.255.0
+ no shutdown
+interface Vlan{{ vlan_invitados }}
+ description INVITADOS
+ ip address {{ svi_invitados }} 255.255.255.0
+ no shutdown
+{% endif %}

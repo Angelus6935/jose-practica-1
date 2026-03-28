@@ -1,0 +1,8 @@
+{# Template HSRP #}
+interface {{ interfaz }}
+ standby version 2
+ standby {{ grupo }} ip {{ vip }}
+ standby {{ grupo }} priority {{ prioridad }}
+ standby {{ grupo }} preempt
+ standby {{ grupo }} timers 3 10
+ standby {{ grupo }} track {{ interfaz_track }} decrement 20

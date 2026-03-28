@@ -1,0 +1,139 @@
+# ============================================
+# Inventario Jose-practica-1
+# Autor: Jose Angel
+# ============================================
+
+routers:
+  - hostname: BA-R1
+    ip: "192.168.249.10"
+    site: Buenos Aires
+    role: router
+    as_bgp: 65001
+    loopback: "10.0.0.1"
+    username: admin
+    password: cisco123
+    device_type: cisco_ios
+
+  - hostname: BA-R2
+    ip: "192.168.249.11"
+    site: Buenos Aires
+    role: router
+    as_bgp: 65001
+    loopback: "10.0.0.2"
+    username: admin
+    password: cisco123
+    device_type: cisco_ios
+
+  - hostname: BHA-R1
+    ip: "192.168.249.20"
+    site: Bahia Blanca
+    role: router
+    as_bgp: 65002
+    loopback: "10.0.1.1"
+    username: admin
+    password: cisco123
+    device_type: cisco_ios
+
+  - hostname: BHA-R2
+    ip: "192.168.249.21"
+    site: Bahia Blanca
+    role: router
+    as_bgp: 65002
+    loopback: "10.0.1.2"
+    username: admin
+    password: cisco123
+    device_type: cisco_ios
+
+  - hostname: NQ-R1
+    ip: "192.168.249.30"
+    site: Neuquen
+    role: router
+    as_bgp: 65003
+    loopback: "10.0.2.1"
+    username: admin
+    password: cisco123
+    device_type: cisco_ios
+
+  - hostname: NQ-R2
+    ip: "192.168.249.31"
+    site: Neuquen
+    role: router
+    as_bgp: 65003
+    loopback: "10.0.2.2"
+    username: admin
+    password: cisco123
+    device_type: cisco_ios
+
+  - hostname: NQSUB-R1
+    ip: "192.168.249.40"
+    site: NQ-SUB
+    role: router
+    as_bgp: 65003
+    loopback: "10.0.3.1"
+    username: admin
+    password: cisco123
+    device_type: cisco_ios
+
+switches:
+  - hostname: BA-SW-CORE
+    ip: "192.168.100.12"
+    site: Buenos Aires
+    role: core
+    username: admin
+    password: cisco123
+    device_type: cisco_ios
+    jump_host: "192.168.249.10"
+
+  - hostname: BA-SW-ACC
+    ip: "192.168.100.13"
+    site: Buenos Aires
+    role: access
+    username: admin
+    password: cisco123
+    device_type: cisco_ios
+    jump_host: "192.168.249.10"
+
+  - hostname: BHA-SW-CORE
+    ip: "192.168.100.22"
+    site: Bahia Blanca
+    role: core
+    username: admin
+    password: cisco123
+    device_type: cisco_ios
+    jump_host: "192.168.249.20"
+
+  - hostname: BHA-SW-ACC
+    ip: "192.168.100.23"
+    site: Bahia Blanca
+    role: access
+    username: admin
+    password: cisco123
+    device_type: cisco_ios
+    jump_host: "192.168.249.20"
+
+  - hostname: NQ-SW-CORE
+    ip: "192.168.100.32"
+    site: Neuquen
+    role: core
+    username: admin
+    password: cisco123
+    device_type: cisco_ios
+    jump_host: "192.168.249.30"
+
+  - hostname: NQ-SW-ACC
+    ip: "192.168.100.33"
+    site: Neuquen
+    role: access
+    username: admin
+    password: cisco123
+    device_type: cisco_ios
+    jump_host: "192.168.249.30"
+
+  - hostname: NQSUB-SW-ACC
+    ip: "192.168.100.41"
+    site: NQ-SUB
+    role: access
+    username: admin
+    password: cisco123
+    device_type: cisco_ios
+    jump_host: "192.168.249.40"

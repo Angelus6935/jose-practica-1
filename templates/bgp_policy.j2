@@ -1,0 +1,17 @@
+{# Template BGP route-maps y politicas #}
+ip prefix-list PL-LAN-{{ sitio }} seq 10 permit {{ red_lan }}
+route-map RM-IN-PRIMARIO permit 10
+ set local-preference 200
+route-map RM-IN-SECUNDARIO permit 10
+ set local-preference 100
+route-map RM-OUT permit 10
+ match ip address prefix-list PL-LAN-{{ sitio }}
+router bgp {{ as_local }}
+{% for vecino in vecinos_primarios %}
+ neighbor {{ vecino }} route-map RM-IN-PRIMARIO in
+ neighbor {{ vecino }} route-map RM-OUT out
+{% endfor %}
+{% for vecino in vecinos_secundarios %}
+ neighbor {{ vecino }} route-map RM-IN-SECUNDARIO in
+ neighbor {{ vecino }} route-map RM-OUT out
+{% endfor %}

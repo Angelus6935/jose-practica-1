@@ -1,0 +1,16 @@
+{# Template BGP entre sitios #}
+router bgp {{ as_local }}
+ bgp router-id {{ router_id }}
+ bgp log-neighbor-changes
+{% for vecino in vecinos %}
+ neighbor {{ vecino.ip }} remote-as {{ vecino.as_remoto }}
+ neighbor {{ vecino.ip }} description {{ vecino.descripcion }}
+{% endfor %}
+ address-family ipv4
+{% for vecino in vecinos %}
+  neighbor {{ vecino.ip }} activate
+{% endfor %}
+{% for red in redes_bgp %}
+  network {{ red.ip }} mask {{ red.mascara }}
+{% endfor %}
+ exit-address-family

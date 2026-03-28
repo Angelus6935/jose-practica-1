@@ -1,0 +1,10 @@
+{# Template WAN interfaces con subinterfaces #}
+{% for subint in subinterfaces %}
+interface {{ subint.interfaz_fisica }}
+ no shutdown
+interface {{ subint.interfaz_fisica }}.{{ subint.vlan }}
+ encapsulation dot1q {{ subint.vlan }}
+ ip address {{ subint.ip }} {{ subint.mascara }}
+ description {{ subint.descripcion }}
+ no shutdown
+{% endfor %}

@@ -1,0 +1,13 @@
+{# Template base - configuracion estandar #}
+{# Autor: Jose Angel #}
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+logging buffered 10000
+no logging console
+ntp server pool.ntp.org
+ntp server 200.3.14.150
+{% if role == "router" %}
+interface {{ mgmt_int }}
+ description MGMT-CLOUD
+{% endif %}

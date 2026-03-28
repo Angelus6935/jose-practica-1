@@ -1,0 +1,10 @@
+{# Template OSPF por sitio #}
+router ospf {{ process_id }}
+ router-id {{ router_id }}
+ passive-interface default
+{% for red in redes_ospf %}
+ network {{ red.ip }} {{ red.wildcard }} area {{ red.area }}
+{% endfor %}
+{% for activa in interfaces_activas %}
+ no passive-interface {{ activa }}
+{% endfor %}

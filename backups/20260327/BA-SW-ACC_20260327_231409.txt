@@ -1,0 +1,26 @@
+show running-config
+Building configuration...
+
+Current configuration : 2386 bytes
+!
+! Last configuration change at 00:43:00 UTC Sat Mar 28 2026 by admin
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname BA-SW-ACC
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging buffered 10000
+no logging console
+!
+username admin privilege 15 secret 5 $1$TNBc$HNRXr6rv648Kd9i2k13xH1
+no aaa new-model
+!
+ --More-- 
